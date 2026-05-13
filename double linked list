@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* prev;
+    Node* next;
+};
+
+Node* head = NULL;
+
+void insert(int val) {
+    Node* temp = new Node();
+    temp->data = val;
+    temp->prev = NULL;
+    temp->next = head;
+
+    if(head != NULL)
+        head->prev = temp;
+
+    head = temp;
+}
+
+void display() {
+    Node* temp = head;
+
+    while(temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
+int main() {
+    insert(10);
+    insert(20);
+    insert(30);
+
+    display();
+
+    return 0;
+}
